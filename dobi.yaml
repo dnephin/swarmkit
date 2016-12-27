@@ -1,0 +1,22 @@
+
+meta:
+  project: swarmkit
+
+mount=source:
+  bind: .
+  path: /go/src/github.com/docker/swarmkit
+
+image=builder:
+  image: swarmkit-dev
+  context: dockerfiles/
+  dockerfile: Dockerfile.build
+
+
+job=binaries:
+  use: builder
+  mounts: [source]
+  command: make binaries
+
+
+alias=binary:
+    tasks: [binaries]

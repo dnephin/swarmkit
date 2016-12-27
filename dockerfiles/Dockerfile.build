@@ -1,0 +1,6 @@
+
+FROM    golang:1.7-alpine
+
+RUN     apk add -U make
+
+WORKDIR /go/src/github.com/docker/swarmkit
